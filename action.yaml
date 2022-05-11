@@ -1,4 +1,4 @@
-name: "Espressif IoT Development Framework (ESP-IDF)"
+name: "Espressif (ESP-IDF) Build Action"
 description: "This action builds your firmware for ESP32 directly in GitHub using Espressif ESP-IDF Docker image."
 branding:
   color: red
