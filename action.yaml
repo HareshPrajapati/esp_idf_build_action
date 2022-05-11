@@ -22,9 +22,15 @@ inputs:
     required: false
 
 runs:
-  using: "composite"
-  steps:
-    - run: |
-        export IDF_TARGET=$(echo "${{ inputs.target }}" | tr '[:upper:]' '[:lower:]' | tr -d '_-') 
-        docker run -t -e IDF_TARGET="${IDF_TARGET}" -v "${GITHUB_WORKSPACE}" -w "${{ inputs.path }}" espressif/idf:${{ inputs.esp_idf_version }} ${{ inputs.command }}
-      shell: bash
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.path }}
+
+#runs:
+#  using: "composite"
+#  steps:
+#    - run: |
+#        export IDF_TARGET=$(echo "${{ inputs.target }}" | tr '[:upper:]' '[:lower:]' | tr -d '_-') 
+#        docker run -t -e IDF_TARGET="${IDF_TARGET}" -v "${GITHUB_WORKSPACE}" -w "${{ inputs.path }}" espressif/idf:${{ inputs.esp_idf_version }} ${{ inputs.command }}
+#      shell: bash
